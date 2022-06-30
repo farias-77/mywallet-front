@@ -2,44 +2,52 @@ import styled from 'styled-components';
 import logo from "../assets/logo.png";
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function Login({ setToken }){
+export default function SignUp(){
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState(''); 
+    const navigate = useNavigate();
 
-    function checkLogin(e){
+    function signUpUser(e){
         e.preventDefault();
-        
-        const loginData = {
-            email,
+
+        if(password !== passwordConfirm){
+            alert('Confirmação de senha inválida.');
+            return;
+        }
+
+        const signUpData = {
+            name,
+            email, 
             password
         }
 
-
-        let promise = axios.post('http://localhost:5000/sign-in', loginData);
-
-        promise.then((response) => {
-            setToken(response.data);
-            console.log(response.data)
+        let promise = axios.post("http://localhost:5000/sign-up", signUpData);
+        promise.then(() => {
+            navigate('/');
         })
 
         promise.catch(() => {
-            alert('Login inválido, por favor verifique os dados');
+            alert('Informações inválidas, por favor verifique.');
         })
-
     }
+
 
     return (
         <Container>
             <img src={logo} alt='logo' />
-            <form onSubmit={ checkLogin }>
+            <form onSubmit={ signUpUser }>
+                <input placeholder="Nome" type='name' value={name} onChange={e => setName(e.target.value)} />
                 <input placeholder="E-mail" type='email' value={email} onChange={e => setEmail(e.target.value)} />
                 <input placeholder="Senha" type='password' value={password} onChange={e => setPassword(e.target.value)} />
-                <button type='submit'>Entrar</button>
+                <input placeholder="Confirme a senha" type='password' value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} />
+                <button type='submit'>Cadastrar</button>
             </form>
-            <Link to='/sign-up'>Primeira vez? Cadastre-se!</Link>
+            <Link to='/'>Já tem uma conta? Entre agora!</Link>
         </Container>
     )
 }
@@ -108,7 +116,7 @@ const Container = styled.div`
     }
 
     a{
-        width: 191px;
+        width: 227;
         font-weight: 700;
         font-size: 15px;
         line-height: 18px;
