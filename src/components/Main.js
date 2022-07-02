@@ -1,21 +1,69 @@
 import styled from 'styled-components';
+import exit from '../assets/exit.png';
+import AccountMovements from './AccountMovements';
+import saida from '../assets/saida.png';
+import entrada from '../assets/entrada.png';
+import ButtonNewMovement from './ButtonNewMovement';
+import { Link } from 'react-router-dom';
 
-export default function Main({ token }){
-
-
-
+export default function Main({ token, userName }){
 
     return ( 
         <Container>
-
-
-
+            <Header>
+                <h3>Olá, {userName}</h3>
+                <img src={exit} alt='exit button' />
+            </Header>
+            <Body>
+                <AccountMovements token={ token }/>
+            </Body>
+            <Footer>
+                <Link to='/deposit' ><ButtonNewMovement icon='add-circle-outline' text='Nova entrada' /></Link>
+                <Link to='/withdraw' ><ButtonNewMovement icon='remove-circle-outline' text='Nova saida' /></Link>
+            </Footer>
         </Container>
     )
 }
 
 const Container = styled.div`
+    width:100%;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    padding: 25px;
 
+    background-color: #8c11be;
+`;
 
+const Header = styled.div`
+    width: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    h3{
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 31px;
+        color: #FFFFFF;
+    }
+`;
+
+const Body = styled.div`
+    margin-top: 25px;
+    width: 100%;
+    height: 430px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin-bottom: 13px;
+`;
+
+const Footer = styled.div`
+    width: 100%;
+    height: 150px;
+    
+    display: flex;
+    justify-content: space-between;
 `;

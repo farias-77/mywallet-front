@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import logo from "../assets/logo.png";
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function Login({ setToken }){
+export default function Login({ setToken, setUserName }){
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     function checkLogin(e){
         e.preventDefault();
@@ -21,8 +22,10 @@ export default function Login({ setToken }){
         let promise = axios.post('http://localhost:5000/sign-in', loginData);
 
         promise.then((response) => {
-            setToken(response.data);
-            console.log(response.data)
+            setToken(response.data.token);
+            setUserName(response.data.name);
+
+            navigate('/main');
         })
 
         promise.catch(() => {
