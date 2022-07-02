@@ -1,18 +1,23 @@
 import styled from 'styled-components';
-import exit from '../assets/exit.png';
+import exitImage from '../assets/exit.png';
 import AccountMovements from './AccountMovements';
-import saida from '../assets/saida.png';
-import entrada from '../assets/entrada.png';
 import ButtonNewMovement from './ButtonNewMovement';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Main({ token, userName }){
+
+    const navigate = useNavigate();
+
+    function exit(){
+        navigate('/');
+        window.location.reload();
+    }
 
     return ( 
         <Container>
             <Header>
                 <h3>Olá, {userName}</h3>
-                <img src={exit} alt='exit button' />
+                <img onClick={exit} src={exitImage} alt='exit button' />
             </Header>
             <Body>
                 <AccountMovements token={ token }/>
