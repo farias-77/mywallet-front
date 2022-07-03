@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import exitImage from '../assets/exit.png';
-import AccountMovements from './AccountMovements';
-import ButtonNewMovement from './ButtonNewMovement';
 import { Link, useNavigate } from 'react-router-dom';
+import ButtonNewMovement from './ButtonNewMovement';
+import AccountMovements from './AccountMovements';
+import AccountTotal from './AccountTotal.js';
+import exitImage from '../assets/exit.png';
+import styled from 'styled-components';
 
 export default function Main({ token, userName }){
 
@@ -21,6 +22,7 @@ export default function Main({ token, userName }){
             </Header>
             <Body>
                 <AccountMovements token={ token }/>
+                <AccountTotal token={ token } />
             </Body>
             <Footer>
                 <Link to='/deposit' ><ButtonNewMovement icon='add-circle-outline' text='Nova entrada' /></Link>
@@ -57,12 +59,21 @@ const Header = styled.div`
 `;
 
 const Body = styled.div`
-    margin-top: 25px;
     width: 100%;
     height: 430px;
-    background: #FFFFFF;
-    border-radius: 5px;
+    
+    padding : 12px;
+    
+    margin-top: 25px;
     margin-bottom: 13px;
+    
+    border-radius: 5px;
+    background: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
 `;
 
 const Footer = styled.div`

@@ -1,18 +1,16 @@
+import NewAccountMovement from './components/NewAccountMovement.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignUp from './components/SignUp.js';
 import SignIn from './components/SignIn.js';
+import Main from './components/Main.js'
+import { useState } from 'react';
 import './assets/reset.css';
 import './assets/styles.css';
-import { useState } from 'react';
-import SignUp from './components/SignUp.js';
-import Main from './components/Main.js'
-import NewAccountMovement from './components/NewAccountMovement.js';
 
 export default function App(){
 
     const [token, setToken] = useState('');
     const [userName, setUserName] = useState('');
-
-    console.log(token , userName)
 
     return (
         <BrowserRouter>
