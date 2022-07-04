@@ -16,6 +16,7 @@ export default function Movement({ day, value, description }){
 const Container = styled.div`
     width: 100%;
 
+    padding: 0 10px;
     margin-bottom: 18px;
 
     display: flex;

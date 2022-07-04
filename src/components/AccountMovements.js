@@ -57,10 +57,16 @@ const NoMovements = styled.div`
 
 const Movements = styled.div`
     width: 100%;
-    height: 100%;
+    height: calc(100% - 10px);
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    overflow: scroll;
+
+    margin-bottom: 6px;
+
+    box-shadow: inset 0 -25px 50px -35px rgba(0, 0, 0, 0.2);
 `;
 

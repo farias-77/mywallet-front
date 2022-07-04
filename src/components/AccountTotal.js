@@ -39,7 +39,7 @@ export default function AccountTotal({ token }){
 
     return <>{ aux && accountMovements.length > 0 ? 
         
-        <Container color={ total >= 0 ? '#03AC00' : '#C70000'}><h3>SALDO</h3><h4>{ total }</h4></Container>
+        <Container color={ total >= 0 ? '#03AC00' : '#C70000'}><h3>SALDO</h3><h4>{ total.toFixed(2) }</h4></Container>
         
         : 
         
@@ -52,6 +52,8 @@ const Container = styled.div`
 
     display: flex;
     justify-content: space-between;
+
+    padding: 0 10px;
 
     h3{
         font-weight: 700;
@@ -66,5 +68,4 @@ const Container = styled.div`
         line-height: 20px;
         color: ${props => props.color};
     }
-
 `;

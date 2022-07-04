@@ -62,8 +62,8 @@ const Body = styled.div`
     width: 100%;
     height: 430px;
     
-    padding : 12px;
-    
+    padding: 10px 0;
+
     margin-top: 25px;
     margin-bottom: 13px;
     
