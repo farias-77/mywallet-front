@@ -23,7 +23,7 @@ export default function NewAccountMovement({ text, multiplier, token }){
             }
         }
 
-        let promise = axios.post('http://localhost:5000/accountMovement', movementInfo, config);
+        let promise = axios.post('https://mywallet-gabriel.herokuapp.com/accountMovement', movementInfo, config);
         promise.then(() => {
             navigate('/main');
         })

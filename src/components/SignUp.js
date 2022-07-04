@@ -26,7 +26,7 @@ export default function SignUp(){
             password
         }
 
-        let promise = axios.post("http://localhost:5000/sign-up", signUpData);
+        let promise = axios.post("https://mywallet-gabriel.herokuapp.com/sign-up", signUpData);
         promise.then(() => {
             navigate('/');
         })

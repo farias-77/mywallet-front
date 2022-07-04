@@ -19,7 +19,7 @@ export default function Login({ setToken, setUserName }){
         }
 
 
-        let promise = axios.post('http://localhost:5000/sign-in', loginData);
+        let promise = axios.post('https://mywallet-gabriel.herokuapp.com/sign-in', loginData);
 
         promise.then((response) => {
             setToken(response.data.token);

@@ -16,7 +16,7 @@ export default function AccountTotal({ token }){
             }
         }
 
-        let promise = axios.get('http://localhost:5000/accountMovement', config);
+        let promise = axios.get('https://mywallet-gabriel.herokuapp.com/accountMovement', config);
 
         promise.then((res) => {
             setAccountMovements([...res.data]);
