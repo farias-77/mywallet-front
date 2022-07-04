@@ -37,7 +37,8 @@ export default function AccountMovements({ token }){
     : 
     
     <NoMovements><p>Não há registros de entrada ou saída</p></NoMovements>
-    }</>)
+    }
+    </>)
 }
 
 const NoMovements = styled.div`
